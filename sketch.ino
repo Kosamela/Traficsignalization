@@ -1,5 +1,5 @@
 /*
-Szkic Arduino Diody LED
+Szkic Arduino Sygnalizacja Świetlna - Polska
 Autor: Kamil Kosmela, 22-10-2023
 */
 
@@ -24,7 +24,7 @@ pinMode(LED_EY, OUTPUT); // pin wyjściowy dla diody LED east yellow
 pinMode(LED_EG, OUTPUT); // pin wyjściowy dla diody LED east green
 pinMode(BUTTON_W, INPUT); // pin wejściowy dla przycisku west
 pinMode(BUTTON_E, INPUT); // pin wejściowy dla przycisku east
-digitalWrite(LED_WR, HIGH);
+digitalWrite(LED_WR, HIGH); 
 digitalWrite(LED_EG, HIGH);
 }
 
@@ -36,32 +36,34 @@ buttonState_E = digitalRead(BUTTON_E);
 
 if ( buttonState_W == HIGH && digitalRead(LED_EG) == HIGH)
 {
+//zamykamy ruch dla east
 digitalWrite(LED_EG, LOW);
 digitalWrite(LED_EY, HIGH);
-digitalWrite(LED_ER, HIGH);
 delay(2000);
 digitalWrite(LED_EY, LOW);
+digitalWrite(LED_ER, HIGH);
 delay(3000); // czekamy, az pojazdy zdaza przejechac most
 // otwieramy ruch dla west
-digitalWrite(LED_WR, LOW); 
 digitalWrite(LED_WY, HIGH); 
 delay(2000);
+digitalWrite(LED_WR, LOW); 
 digitalWrite(LED_WY, LOW); 
 digitalWrite(LED_WG, HIGH);
 }
 if ( buttonState_E == HIGH && digitalRead(LED_WG) == HIGH )
 {
+// zamykamy ruch dla west
 digitalWrite(LED_WG, LOW);
 digitalWrite(LED_WY, HIGH);
-digitalWrite(LED_WR, HIGH);
 delay(2000);
 digitalWrite(LED_WY, LOW);
+digitalWrite(LED_WR, HIGH);
 delay(3000); // czekamy, az pojazdy zdaza przejechac most
 // otwieramy ruch dla east
-digitalWrite(LED_ER, LOW); 
 digitalWrite(LED_EY, HIGH); 
 delay(2000);
 digitalWrite(LED_EY, LOW); 
+digitalWrite(LED_ER, LOW); 
 digitalWrite(LED_EG, HIGH);
 }
 }
